@@ -137,11 +137,13 @@
 
         .umbrella-icon {
             margin: 0;
-            color: #ffffff;
+            color: #000000;
             filter: 
-                drop-shadow(0 0 30px rgba(255, 255, 255, 0.8))
-                drop-shadow(0 0 60px rgba(255, 255, 255, 0.5))
-                drop-shadow(0 0 90px rgba(255, 255, 255, 0.3));
+                drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 15px rgba(255, 255, 255, 0.9))
+                drop-shadow(0 0 25px rgba(255, 255, 255, 0.7))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 0.5))
+                drop-shadow(0 0 60px rgba(255, 255, 255, 0.3));
             animation: gentleGlow 3s ease-in-out infinite alternate;
         }
         
@@ -154,15 +156,19 @@
         @keyframes gentleGlow {
             from {
                 filter: 
-                    drop-shadow(0 0 30px rgba(255, 255, 255, 0.8))
-                    drop-shadow(0 0 60px rgba(255, 255, 255, 0.5))
-                    drop-shadow(0 0 90px rgba(255, 255, 255, 0.3));
+                    drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+                    drop-shadow(0 0 15px rgba(255, 255, 255, 0.9))
+                    drop-shadow(0 0 25px rgba(255, 255, 255, 0.7))
+                    drop-shadow(0 0 40px rgba(255, 255, 255, 0.5))
+                    drop-shadow(0 0 60px rgba(255, 255, 255, 0.3));
             }
             to {
                 filter: 
-                    drop-shadow(0 0 40px rgba(255, 255, 255, 1))
-                    drop-shadow(0 0 80px rgba(255, 255, 255, 0.7))
-                    drop-shadow(0 0 120px rgba(255, 255, 255, 0.5));
+                    drop-shadow(0 0 12px rgba(255, 255, 255, 1))
+                    drop-shadow(0 0 20px rgba(255, 255, 255, 0.9))
+                    drop-shadow(0 0 35px rgba(255, 255, 255, 0.8))
+                    drop-shadow(0 0 50px rgba(255, 255, 255, 0.6))
+                    drop-shadow(0 0 80px rgba(255, 255, 255, 0.4));
             }
         }
 
@@ -170,13 +176,18 @@
             font-family: 'Alef', 'Heebo', sans-serif;
             font-size: 3.5rem;
             font-weight: 700;
-            margin: 0;
+            margin: 0 0 10px 0;
             letter-spacing: 8px;
             text-transform: uppercase;
             color: #ffffff;
+            -webkit-text-stroke: 1px #333333;
+            text-stroke: 1px #333333;
             text-shadow: 
-                0 0 20px rgba(255, 255, 255, 0.6),
-                0 0 40px rgba(255, 255, 255, 0.4);
+                0 0 5px rgba(50, 50, 50, 1),
+                0 0 10px rgba(40, 40, 40, 0.8),
+                0 0 20px rgba(30, 30, 30, 0.6),
+                0 0 30px rgba(20, 20, 20, 0.4);
+            animation: darkShadowGlow 3s ease-in-out infinite alternate;
         }
 
         .enter-button {
@@ -192,16 +203,27 @@
             cursor: pointer;
             transition: all 0.3s ease;
             border-radius: 0;
-            text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+            -webkit-text-stroke: 1px #333333;
+            text-stroke: 1px #333333;
+            text-shadow: 
+                0 0 5px rgba(50, 50, 50, 1),
+                0 0 10px rgba(40, 40, 40, 0.8),
+                0 0 20px rgba(30, 30, 30, 0.6);
+            box-shadow: 
+                0 0 10px rgba(50, 50, 50, 0.5),
+                inset 0 0 10px rgba(40, 40, 40, 0.3);
         }
 
         .enter-button:hover {
             border-color: rgba(255, 255, 255, 1);
             background: rgba(255, 255, 255, 0.1);
-            text-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+            text-shadow: 
+                0 0 8px rgba(60, 60, 60, 1),
+                0 0 15px rgba(50, 50, 50, 0.9),
+                0 0 25px rgba(40, 40, 40, 0.7);
             box-shadow: 
-                0 0 20px rgba(255, 255, 255, 0.3),
-                inset 0 0 20px rgba(255, 255, 255, 0.1);
+                0 0 15px rgba(60, 60, 60, 0.7),
+                inset 0 0 15px rgba(50, 50, 50, 0.4);
         }
 
         /* Main Content Screen */
@@ -254,7 +276,7 @@
 
         /* Story Section */
         .story-section {
-            margin-bottom: 40px;
+            margin-bottom: 0px;
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease-out 0.5s forwards;
@@ -461,18 +483,37 @@
             letter-spacing: 3px !important;
         }
         
-        @keyframes subtleGlow {
+        @keyframes textShadowGlow {
             0%, 100% { 
                 text-shadow: 
-                    0 0 10px rgba(255, 255, 255, 0.6),
-                    0 0 20px rgba(255, 255, 255, 0.3),
-                    0 0 30px rgba(255, 255, 255, 0.1);
+                    0 0 5px rgba(255, 255, 255, 1),
+                    0 0 10px rgba(255, 255, 255, 0.8),
+                    0 0 20px rgba(255, 255, 255, 0.6),
+                    0 0 30px rgba(255, 255, 255, 0.4);
             }
             50% { 
                 text-shadow: 
-                    0 0 15px rgba(255, 255, 255, 0.8),
-                    0 0 25px rgba(255, 255, 255, 0.4),
-                    0 0 35px rgba(255, 255, 255, 0.2);
+                    0 0 8px rgba(255, 255, 255, 1),
+                    0 0 15px rgba(255, 255, 255, 0.9),
+                    0 0 25px rgba(255, 255, 255, 0.7),
+                    0 0 40px rgba(255, 255, 255, 0.5);
+            }
+        }
+        
+        @keyframes darkShadowGlow {
+            0%, 100% { 
+                text-shadow: 
+                    0 0 5px rgba(50, 50, 50, 1),
+                    0 0 10px rgba(40, 40, 40, 0.8),
+                    0 0 20px rgba(30, 30, 30, 0.6),
+                    0 0 30px rgba(20, 20, 20, 0.4);
+            }
+            50% { 
+                text-shadow: 
+                    0 0 8px rgba(60, 60, 60, 1),
+                    0 0 15px rgba(50, 50, 50, 0.9),
+                    0 0 25px rgba(40, 40, 40, 0.7),
+                    0 0 40px rgba(30, 30, 30, 0.5);
             }
         }
         
@@ -700,17 +741,19 @@
 
         .story-umbrella-icon {
             margin: 0 auto !important;
-            color: #ffffff !important;
+            color: #000000 !important;
             filter: 
-                drop-shadow(0 0 30px rgba(255, 255, 255, 0.8))
-                drop-shadow(0 0 60px rgba(255, 255, 255, 0.6))
-                drop-shadow(0 0 90px rgba(255, 255, 255, 0.4)) !important;
+                drop-shadow(0 0 8px rgba(255, 255, 255, 1))
+                drop-shadow(0 0 15px rgba(255, 255, 255, 0.9))
+                drop-shadow(0 0 25px rgba(255, 255, 255, 0.7))
+                drop-shadow(0 0 40px rgba(255, 255, 255, 0.5))
+                drop-shadow(0 0 60px rgba(255, 255, 255, 0.3)) !important;
             animation: gentleGlow 3s ease-in-out infinite alternate !important;
         }
 
         .story-umbrella-icon svg {
-            width: 150px !important;
-            height: 150px !important;
+            width: 200px !important;
+            height: 200px !important;
         }
 
         .story-wanderer-group {
@@ -786,7 +829,7 @@
 
         /* Story Plain Style */
         .story-plain {
-            margin: 20px 0;
+            margin: 0;
             padding: 40px;
             text-align: center;
             max-width: 800px;
@@ -796,7 +839,7 @@
         
         .story-plain p {
             font-family: 'Heebo', 'Assistant', sans-serif;
-            font-size: 1.4rem;
+            font-size: 1.6rem;
             font-weight: 400;
             line-height: 1.8;
             color: #e5e5e5;
@@ -809,15 +852,18 @@
             font-family: 'Alef', 'Heebo', sans-serif;
             font-size: 2.8rem;
             font-weight: 700;
-            color: #ffffff;
+            color: #000000;
             text-transform: uppercase;
             letter-spacing: 6px;
             margin-bottom: 10px;
+            -webkit-text-stroke: 1px #ffffff;
+            text-stroke: 1px #ffffff;
             text-shadow: 
-                0 0 8px rgba(255, 255, 255, 0.8),
-                0 0 15px rgba(255, 255, 255, 0.4),
-                0 0 25px rgba(255, 255, 255, 0.2);
-            animation: subtleGlow 3s ease-in-out infinite alternate;
+                0 0 5px rgba(255, 255, 255, 1),
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.4);
+            animation: textShadowGlow 3s ease-in-out infinite alternate;
         }
 
         /* Event Invitation Section - Cyberpunk Style */
@@ -825,6 +871,7 @@
             opacity: 0;
             transform: translateY(50px);
             animation: fadeInUp 1s ease-out 1s forwards;
+            margin-top: 130px;
         }
 
         .invitation-container {
@@ -874,39 +921,20 @@
 
         .event-title {
             font-family: 'Alef', 'Heebo', sans-serif;
-            font-size: 4rem;
+            font-size: 2.8rem;
             font-weight: 700;
-            color: transparent;
+            color: #000000;
             text-transform: uppercase;
-            letter-spacing: 8px;
+            letter-spacing: 6px;
             margin-bottom: 10px;
-            -webkit-text-stroke: 2px #00ffff;
-            text-stroke: 2px #00ffff;
+            -webkit-text-stroke: 1px #ffffff;
+            text-stroke: 1px #ffffff;
             text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff;
-            animation: neonOutlinePulse 2s ease-in-out infinite alternate;
-        }
-        
-        @keyframes neonOutlinePulse {
-            0% { 
-                -webkit-text-stroke: 2px #00ffff;
-                text-stroke: 2px #00ffff;
-                text-shadow: 
-                    0 0 10px #00ffff,
-                    0 0 20px #00ffff,
-                    0 0 40px #00ffff;
-            }
-            100% { 
-                -webkit-text-stroke: 2px #00ffff;
-                text-stroke: 2px #00ffff;
-                text-shadow: 
-                    0 0 15px #00ffff,
-                    0 0 30px #00ffff,
-                    0 0 50px #00ffff,
-                    0 0 80px #00ffff;
-            }
+                0 0 5px rgba(255, 255, 255, 1),
+                0 0 10px rgba(255, 255, 255, 0.8),
+                0 0 20px rgba(255, 255, 255, 0.6),
+                0 0 30px rgba(255, 255, 255, 0.4);
+            animation: textShadowGlow 3s ease-in-out infinite alternate;
         }
 
         .event-date {
@@ -1021,9 +1049,9 @@
 
         .cta-button {
             position: relative;
-            background: rgba(0, 0, 0, 0.8);
-            border: 2px solid #ff0080;
-            color: #ff0080;
+            background: #000000;
+            border: 2px solid #ffffff;
+            color: #ffffff;
             font-family: 'Heebo', 'Assistant', sans-serif;
             font-size: 1.2rem;
             font-weight: 700;
@@ -1035,11 +1063,12 @@
             overflow: hidden;
             text-transform: uppercase;
             text-shadow: 
-                0 0 10px #ff0080,
-                0 0 20px #ff0080;
+                0 0 5px rgba(255, 255, 255, 0.8),
+                0 0 10px rgba(255, 255, 255, 0.5);
             box-shadow: 
-                0 0 20px rgba(255, 0, 128, 0.3),
-                inset 0 0 20px rgba(255, 0, 128, 0.1);
+                0 0 15px rgba(255, 255, 255, 0.5),
+                0 0 30px rgba(255, 255, 255, 0.3),
+                inset 0 0 20px rgba(255, 255, 255, 0.1);
         }
 
         .button-glow {
@@ -1053,18 +1082,18 @@
         }
 
         .cta-button:hover {
-            border-color: #00ffff;
-            color: #00ffff;
-            background: rgba(0, 255, 255, 0.1);
+            border-color: #ffffff;
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.1);
             transform: translateY(-5px);
             text-shadow: 
-                0 0 10px #00ffff,
-                0 0 20px #00ffff,
-                0 0 40px #00ffff;
+                0 0 8px rgba(255, 255, 255, 1),
+                0 0 15px rgba(255, 255, 255, 0.8),
+                0 0 25px rgba(255, 255, 255, 0.6);
             box-shadow: 
-                0 0 30px rgba(0, 255, 255, 0.5),
-                0 10px 40px rgba(0, 255, 255, 0.3),
-                inset 0 0 30px rgba(0, 255, 255, 0.2);
+                0 0 20px rgba(255, 255, 255, 0.7),
+                0 10px 40px rgba(255, 255, 255, 0.4),
+                inset 0 0 30px rgba(255, 255, 255, 0.2);
         }
         
         /* Phases Container - Cyberpunk Timeline */
@@ -1076,11 +1105,16 @@
         
         .phase-section {
             margin: 40px 0;
-            padding: 30px;
-            background: rgba(0, 0, 0, 0.4);
-            border: 1px solid rgba(255, 0, 128, 0.3);
+            padding: 20px;
+            background: #000000;
+            border: 2px solid #ffffff;
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 0 10px rgba(255, 255, 255, 0.6),
+                0 0 20px rgba(255, 255, 255, 0.3),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+            animation: boxShadowGlow 4s ease-in-out infinite alternate;
         }
         
         .phase-section::before {
@@ -1090,13 +1124,28 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 0, 128, 0.1), transparent);
-            animation: phaseGlow 3s infinite ease-in-out;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: phaseGlow 5s infinite ease-in-out;
         }
         
         @keyframes phaseGlow {
             0%, 100% { left: -100%; }
             50% { left: 100%; }
+        }
+        
+        @keyframes boxShadowGlow {
+            0%, 100% { 
+                box-shadow: 
+                    0 0 10px rgba(255, 255, 255, 0.6),
+                    0 0 20px rgba(255, 255, 255, 0.3),
+                    inset 0 0 30px rgba(255, 255, 255, 0.1);
+            }
+            50% { 
+                box-shadow: 
+                    0 0 15px rgba(255, 255, 255, 0.8),
+                    0 0 30px rgba(255, 255, 255, 0.5),
+                    inset 0 0 40px rgba(255, 255, 255, 0.15);
+            }
         }
         
         .phase-title {
@@ -1156,23 +1205,33 @@
             letter-spacing: 2px !important;
             text-transform: uppercase !important;
             padding: 10px 0;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            background: #000000;
+            border: 1px solid rgba(255, 255, 255, 0.6);
             transition: all 0.3s ease;
+            box-shadow: 0 0 8px rgba(255, 255, 255, 0.3);
         }
         
         .artist-name:hover {
             transform: scale(1.05);
-            border-color: rgba(0, 255, 255, 0.6);
+            border-color: rgba(255, 255, 255, 1);
+            box-shadow: 
+                0 0 12px rgba(255, 255, 255, 0.6),
+                0 0 20px rgba(255, 255, 255, 0.3);
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
         }
         
         /* Artists Container */
         .artists-container {
             margin: 50px 0;
             padding: 40px;
-            background: rgba(0, 0, 0, 0.6);
-            border: 2px solid rgba(255, 255, 0, 0.4);
+            background: #000000;
+            border: 2px solid #ffffff;
             position: relative;
             overflow: hidden;
+            box-shadow: 
+                0 0 12px rgba(255, 255, 255, 0.6),
+                0 0 25px rgba(255, 255, 255, 0.3),
+                inset 0 0 25px rgba(255, 255, 255, 0.1);
         }
         
         .artists-container::before {
@@ -1182,8 +1241,8 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 0, 0.1), transparent);
-            animation: artistsGlow 4s infinite ease-in-out;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.15), transparent);
+            animation: artistsGlow 6s infinite ease-in-out;
         }
         
         @keyframes artistsGlow {
@@ -1213,6 +1272,8 @@
         @media (max-width: 768px) {
             .landing-title {
                 font-size: 2.5rem !important;
+                -webkit-text-stroke: 1px #333333 !important;
+                text-stroke: 1px #333333 !important;
             }
             
             /* Phases responsive */
@@ -1227,7 +1288,7 @@
             
             .phase-section {
                 margin: 20px 0 !important;
-                padding: 20px !important;
+                padding: 10px !important;
             }
             
             .phase-title {
@@ -1274,7 +1335,11 @@
             }
             
             .content {
-                padding: 40px 15px;
+                padding: 80px 15px;
+            }
+            
+            .event-invitation {
+                margin-top: 130px !important;
             }
             
             .story-title {
@@ -1304,10 +1369,10 @@
             }
             
             .event-title {
-                font-size: 2.5rem;
+                font-size: 2.2rem;
                 letter-spacing: 4px;
-                -webkit-text-stroke: 1px #00ffff !important;
-                text-stroke: 1px #00ffff !important;
+                -webkit-text-stroke: 1px #ffffff !important;
+                text-stroke: 1px #ffffff !important;
             }
             
             .event-date {
@@ -1487,17 +1552,17 @@
             }
 
             .story-umbrella-icon svg {
-                width: 100px !important;
-                height: 100px !important;
+                width: 150px !important;
+                height: 150px !important;
             }
 
             .story-plain {
-                margin: 15px 0 !important;
+                margin: 0 !important;
                 padding: 20px !important;
             }
             
             .story-plain p {
-                font-size: 1.1rem !important;
+                font-size: 1.3rem !important;
                 line-height: 1.6 !important;
                 margin-bottom: 15px !important;
             }
@@ -1602,11 +1667,11 @@
                         <p class="story-bold">בלילות נדירים, כשהירח מתעטף בערפל</p>
                         <p>המטריה נפרשת שוב</p>
                         <p>ותחתיה מתכנסים דמויות קסומות</p>
-                        <p class="story-bold">דמויות משוטטות באפלה לבושות בסודות ברצון להרפתקה</p>
+                        <p class="story-bold">דמויות משוטטות באפלה לבושות בסודות</p>
                         <p>הן מתכנסות סביב השער</p>
                         <p>אל עולם שבו הקצב והחושך מתמזגים</p>
                         <p class="story-bold">אל מקום שבו המציאות היא מעטפת בלבד</p>
-                        <p>ושמאחורי המסך מסתתרת אגדה</p>
+                        <p class="story-bold">ושמאחורי המסך מסתתרת אגדה</p>
                     </div>
                 </div>
             </section>
