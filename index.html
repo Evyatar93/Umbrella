@@ -1665,11 +1665,43 @@
 
 
         @media (max-width: 768px) {
+            .landing-content {
+                gap: 80px !important;
+                padding: 0 20px !important;
+                justify-content: center !important;
+                align-items: center !important;
+                min-height: 100vh !important;
+                height: 100vh !important;
+                display: flex !important;
+                flex-direction: column !important;
+            }
+            
             .landing-title {
                 font-size: 2.5rem !important;
                 -webkit-text-stroke: 1px #333333 !important;
                 text-stroke: 1px #333333 !important;
+                margin: 0 !important;
+                text-align: center !important;
             }
+            
+            .umbrella-icon {
+                margin: 0 !important;
+                text-align: center !important;
+            }
+            
+            .umbrella-icon svg {
+                width: 150px !important;
+                height: 150px !important;
+            }
+            
+            .enter-button {
+                margin: 0 !important;
+                text-align: center !important;
+                font-size: 1.2rem !important;
+                padding: 15px 40px !important;
+                letter-spacing: 4px !important;
+            }
+            
             
             /* Phases responsive */
             .event-header {
@@ -2025,10 +2057,6 @@
     <div class="mist"></div>
     
     
-    <!-- Music control button -->
-    <button id="music-toggle" class="music-control" title="Toggle Music">
-        <span id="music-icon">🔊</span>
-    </button>
     
     <!-- Background music -->
     <audio id="background-music" loop>
@@ -2039,6 +2067,7 @@
     <!-- Landing Screen -->
     <div id="landing-screen" class="screen active">
         <div class="landing-content">
+            <h1 class="landing-title" data-text="The Umbrella">The Umbrella</h1>
             <div class="umbrella-icon">
                 <svg width="800px" height="800px" viewBox="0 0 64 58" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" aria-hidden="true" role="img" class="iconify iconify--emojione-monotone" preserveAspectRatio="xMidYMid meet">
                     <!-- Umbrella canopy -->
@@ -2049,7 +2078,6 @@
                     <path d="M32.25 50 L32.25 53 Q32.25 56 28.5 56 Q24.5 56 24.5 53 Q24.5 51 25.5 51" stroke="currentColor" stroke-width="1.5" fill="none"/>
                 </svg>
             </div>
-            <h1 class="landing-title" data-text="The Umbrella">The Umbrella</h1>
             <button id="enter-btn" class="enter-button">Enter</button>
         </div>
     </div>
@@ -2185,8 +2213,6 @@
             // Background video and music
             const backgroundVideo = document.getElementById('background-video');
             const backgroundMusic = document.getElementById('background-music');
-            const musicToggle = document.getElementById('music-toggle');
-            const musicIcon = document.getElementById('music-icon');
             backgroundMusic.volume = 0.3; // Set volume to 30%
             
             // Start video
@@ -2194,26 +2220,11 @@
             
             let musicPlaying = false;
             
-            // Music toggle functionality
-            musicToggle.addEventListener('click', function() {
-                if (musicPlaying) {
-                    backgroundMusic.pause();
-                    musicIcon.textContent = '🔇';
-                    musicPlaying = false;
-                } else {
-                    backgroundMusic.play().catch(e => console.log('Could not play music'));
-                    musicIcon.textContent = '🔊';
-                    musicPlaying = true;
-                }
-            });
-            
             // Try to play music automatically (may be blocked by browser policy)
             backgroundMusic.play().then(() => {
                 musicPlaying = true;
-                musicIcon.textContent = '🔊';
             }).catch(e => {
                 console.log('Autoplay blocked by browser policy');
-                musicIcon.textContent = '🔇';
                 musicPlaying = false;
             });
             
