@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Video Background</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Heebo:wght@300;400;500;700&family=Unica+One&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Heebo:wght@300;400;500;700&family=Unica+One&family=Creepster&display=swap" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -100,6 +100,7 @@
             margin: 0 0 20px 0;
             line-height: 1.6;
             direction: rtl;
+            text-align: center;
         }
 
         #story-content p.neon {
@@ -184,6 +185,15 @@
             background: rgba(255, 255, 255, 0.2);
             transform: translateY(-5px);
         }
+
+        /* Typewriter effect */
+        .typewriter {
+            opacity: 0;
+        }
+
+        .typewriter.typing {
+            opacity: 1;
+        }
     </style>
 </head>
 <body>
@@ -204,7 +214,7 @@
             <!-- Umbrella canopy -->
             <path d="M32.938 6.708C16.781 7.126 4.957 17.053 2 30.229A9.675 9.675 0 0 1 8.963 27.3a9.654 9.654 0 0 1 7.68 3.763a9.647 9.647 0 0 1 7.678-3.763c2.637 0 5.01 1.05 6.742 2.729A9.652 9.652 0 0 1 41.321 27.3a9.652 9.652 0 0 1 7.68 3.763a9.65 9.65 0 0 1 7.68-3.763A9.67 9.67 0 0 1 62 30.229C59.045 17.053 47.221 7.126 32.938 6.708" fill="currentColor"/>
             <!-- Text -->
-            <text x="32" y="42" text-anchor="middle" font-family="Heebo, sans-serif" font-size="8" fill="currentColor" letter-spacing="1">The Umbrella</text>
+            <text x="32" y="42" text-anchor="middle" font-family="Creepster, Heebo, sans-serif" font-size="8" fill="currentColor" letter-spacing="1">The Umbrella</text>
         </svg>
     </div>
 
@@ -213,14 +223,14 @@
 
     <!-- Story content - hidden initially -->
     <div id="story-content" style="display: none;">
-            <p class="neon">בלילות נדירים, כשהירח מתעטף בערפל</p>
-            <p>המטריה נפרשת שוב</p>
-            <p>ותחתיה מתכנסים דמויות קסומות</p>
-            <p class="neon">דמויות משוטטות באפלה לבושות בסודות</p>
-            <p>הן מתכנסות סביב השער</p>
-            <p>אל עולם שבו הקצב והחושך מתמזגים</p>
-            <p class="neon">אל מקום שבו המציאות היא מעטפת בלבד</p>
-            <p>ושמאחורי המסך מסתתרת אגדה</p>
+            <p class="neon typewriter">בלילות נדירים, כשהירח מתעטף בערפל</p>
+            <p class="typewriter">המטריה נפרשת שוב</p>
+            <p class="typewriter">ותחתיה מתכנסים דמויות קסומות</p>
+            <p class="neon typewriter">דמויות משוטטות באפלה לבושות בסודות</p>
+            <p class="typewriter">הן מתכנסות סביב השער</p>
+            <p class="typewriter">אל עולם שבו הקצב והחושך מתמזגים</p>
+            <p class="neon typewriter">אל מקום שבו המציאות היא מעטפת בלבד</p>
+            <p class="typewriter">ושמאחורי המסך מסתתרת אגדה</p>
 
             <!-- Event sections -->
             <div class="event-section">
@@ -291,7 +301,52 @@
                 
                 // Show story content
                 storyContent.style.display = 'block';
+                
+                // Start typewriter effect
+                startTypewriterEffect();
             });
+
+            function startTypewriterEffect() {
+                const typewriterElements = document.querySelectorAll('.typewriter');
+                let currentIndex = 0;
+                
+                function typeNextElement() {
+                    if (currentIndex >= typewriterElements.length) return;
+                    
+                    const element = typewriterElements[currentIndex];
+                    const text = element.textContent;
+                    element.innerHTML = '';
+                    element.style.opacity = '1';
+                    element.classList.add('typing');
+                    
+                    // Create spans for each character
+                    const chars = text.split('').map(char => {
+                        const span = document.createElement('span');
+                        span.textContent = char;
+                        span.style.opacity = '0';
+                        return span;
+                    });
+                    
+                    chars.forEach(span => element.appendChild(span));
+                    
+                    let charIndex = 0;
+                    const typeInterval = setInterval(() => {
+                        if (charIndex < chars.length) {
+                            chars[charIndex].style.opacity = '1';
+                            charIndex++;
+                        }
+                        
+                        if (charIndex >= chars.length) {
+                            clearInterval(typeInterval);
+                            element.classList.remove('typing');
+                            currentIndex++;
+                            setTimeout(typeNextElement, 800); // Delay before next paragraph
+                        }
+                    }, 80); // Slower typing speed
+                }
+                
+                setTimeout(typeNextElement, 500); // Initial delay
+            }
         });
     </script>
 </body>
