@@ -543,10 +543,10 @@
                 backgroundMusic.play().catch(e => console.log('Music play failed'));
                 
                 // Move moon up and stop animation
-                moonIcon.style.bottom = '450px';
+                moonIcon.style.bottom = '400px';
                 moonIcon.style.animation = 'none';
                 moonIcon.style.transform = 'translateX(-50%) scale(0.8)';
-                moonIcon.style.transition = 'all 2s ease-in-out';
+                moonIcon.style.transition = 'all 4s ease-in-out';
                 
                 // Wait for moon to reach its position, then show text
                 setTimeout(() => {
@@ -555,7 +555,7 @@
                     
                     // Start typewriter effect
                     startTypewriterEffect();
-                }, 2000); // Wait 2 seconds for moon transition to complete
+                }, 4000); // Wait 4 seconds for moon transition to complete
             });
 
             function startTypewriterEffect() {
