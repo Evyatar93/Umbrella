@@ -20,6 +20,7 @@
         body {
             position: relative;
             min-height: 100vh;
+            overflow-x: hidden;
         }
 
         /* Background video */
@@ -48,11 +49,14 @@
         .umbrella-icon {
             position: absolute;
             top: 50px;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
+            right: 0;
+            margin-left: auto;
+            margin-right: auto;
+            width: 250px;
             color: #ffffff;
             animation: umbrellaGlow 4s ease-in-out infinite alternate;
-            z-index: 1;
+            z-index: 10;
         }
 
         @keyframes umbrellaGlow {
@@ -258,7 +262,7 @@
         /* Story content */
         #story-content {
             position: absolute;
-            top: 240px;
+            top: 200px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
@@ -432,7 +436,7 @@
 
     <!-- Moon Icon -->
     <div id="moon-icon" class="moon-icon">
-        <img src="C:\Users\evith\Downloads\Weather_icon_-_full_moon.svg" alt="Full Moon" width="80" height="80">
+        <img src="Weather_icon_-_full_moon.svg" alt="Full Moon" width="80" height="80">
         <!-- Fog overlay with clipping -->
         <div class="fog-overlay">
             <div class="fog-cloud fog-cloud1"></div>
@@ -442,7 +446,7 @@
     </div>
 
     <!-- Story content - hidden initially -->
-    <div id="story-content" style="display: none;">
+    <div id="story-content" style="visibility: hidden;">
             <p class="neon typewriter">בלילות נדירים, כשהירח מתעטף בערפל</p>
             <p class="typewriter">המטריה נפרשת שוב</p>
             <p class="typewriter">ותחתיה מתכנסים דמויות קסומות</p>
@@ -517,10 +521,10 @@
                 backgroundMusic.play().catch(e => console.log('Music play failed'));
                 
                 // Hide moon
-                moonIcon.style.display = 'none';
+                moonIcon.style.visibility = 'hidden';
                 
                 // Show story content
-                storyContent.style.display = 'block';
+                storyContent.style.visibility = 'visible';
                 
                 // Start typewriter effect
                 startTypewriterEffect();
