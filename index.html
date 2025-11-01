@@ -4,8 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Video Background</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Heebo:wght@300;400;500;700&family=Unica+One&family=Creepster&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alef:wght@400;700&family=Heebo:wght@300;400;500;700&family=Unica+One&display=swap" rel="stylesheet">
     <style>
+        @font-face {
+            font-family: 'NightmarePills';
+            src: url('NightmarePills-BV2w.ttf') format('truetype');
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -46,39 +51,209 @@
             left: 50%;
             transform: translateX(-50%);
             color: #ffffff;
-            filter: drop-shadow(0 0 10px #ffffff);
+            animation: umbrellaGlow 4s ease-in-out infinite alternate;
             z-index: 1;
+        }
+
+        @keyframes umbrellaGlow {
+            0% { 
+                filter: drop-shadow(0 0 15px rgba(255,220,0,0.5)) drop-shadow(0 0 30px rgba(255,220,0,0.25)); 
+            }
+            100% { 
+                filter: drop-shadow(0 0 25px rgba(255,220,0,0.7)) drop-shadow(0 0 45px rgba(255,220,0,0.35)); 
+            }
+        }
+
+        /* Umbrella fog effect */
+        .umbrella-icon::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: -20px;
+            bottom: -20px;
+            background: radial-gradient(circle, 
+                rgba(0,0,0,0.2) 0%, 
+                rgba(0,0,0,0.15) 30%, 
+                rgba(0,0,0,0.08) 50%, 
+                rgba(0,0,0,0.04) 70%, 
+                transparent 100%);
+            border-radius: 50%;
+            animation: umbrellaFog 6s ease-in-out infinite alternate;
+            z-index: -1;
+            pointer-events: none;
+        }
+
+        @keyframes umbrellaFog {
+            0% { 
+                transform: scale(1) rotate(0deg);
+                opacity: 0.6;
+            }
+            100% { 
+                transform: scale(1.1) rotate(3deg);
+                opacity: 0.4;
+            }
+        }
+
+        /* Moving fog clouds across umbrella */
+        .umbrella-icon .umbrella-fog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 250px;
+            height: 120px;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .umbrella-icon .umbrella-fog-cloud {
+            position: absolute;
+            border-radius: 50px;
+            filter: blur(10px);
+            animation: umbrellaFogMove 12s linear infinite;
+        }
+
+        .umbrella-icon .umbrella-fog-cloud1 {
+            width: 120px;
+            height: 30px;
+            top: 40px;
+            left: -150px;
+            background: radial-gradient(ellipse, 
+                rgba(0,0,0,0.6) 0%, 
+                rgba(0,0,0,0.4) 30%, 
+                rgba(0,0,0,0.2) 60%, 
+                transparent 100%);
+            animation-delay: 0s;
+        }
+
+        .umbrella-icon .umbrella-fog-cloud2 {
+            width: 140px;
+            height: 35px;
+            top: 60px;
+            left: -170px;
+            background: radial-gradient(ellipse, 
+                rgba(0,0,0,0.5) 0%, 
+                rgba(0,0,0,0.3) 35%, 
+                rgba(0,0,0,0.15) 65%, 
+                transparent 100%);
+            animation-delay: -5s;
+        }
+
+        .umbrella-icon .umbrella-fog-cloud3 {
+            width: 100px;
+            height: 25px;
+            top: 85px;
+            left: -130px;
+            background: radial-gradient(ellipse, 
+                rgba(0,0,0,0.4) 0%, 
+                rgba(0,0,0,0.25) 40%, 
+                rgba(0,0,0,0.1) 70%, 
+                transparent 100%);
+            animation-delay: -10s;
+        }
+
+        @keyframes umbrellaFogMove {
+            0% {
+                transform: translateX(0) scaleX(1);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(500px) scaleX(1.5);
+                opacity: 0;
+            }
         }
 
         .umbrella-icon svg {
             width: 250px;
-            height: 150px;
+            height: 120px;
         }
 
-        /* Enter button - bottom of page */
-        .enter-button {
+        /* Moon Icon */
+        .moon-icon {
             position: absolute;
-            bottom: 150px;
+            bottom: 120px;
             left: 50%;
             transform: translateX(-50%);
-            background: transparent;
-            border: 2px solid #ffffff;
-            color: #ffffff;
-            font-family: 'Heebo', sans-serif;
-            font-size: 24px;
-            font-weight: normal;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            padding: 15px 40px;
             cursor: pointer;
-            transition: all 0.3s ease;
             z-index: 1;
+            width: 80px;
+            height: 80px;
         }
 
-        .enter-button:hover {
-            background: rgba(255, 255, 255, 0.1);
-            border-color: #ffffff;
+
+        .moon-icon img {
+            filter: sepia(100%) saturate(180%) hue-rotate(-10deg) brightness(1.3) drop-shadow(0 0 0 transparent) !important;
         }
+
+        .moon-icon img * {
+            filter: none !important;
+        }
+
+        /* Fog clouds moving across the moon */
+        .moon-icon .fog-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 80px;
+            height: 80px;
+            overflow: hidden;
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .moon-icon .fog-cloud {
+            position: absolute;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50px;
+            filter: blur(8px);
+            animation: fogMove 8s linear infinite;
+        }
+
+        .moon-icon .fog-cloud1 {
+            width: 60px;
+            height: 20px;
+            top: 15px;
+            left: -80px;
+            animation-delay: 0s;
+        }
+
+        .moon-icon .fog-cloud2 {
+            width: 80px;
+            height: 25px;
+            top: 35px;
+            left: -100px;
+            animation-delay: -3s;
+        }
+
+        .moon-icon .fog-cloud3 {
+            width: 50px;
+            height: 15px;
+            top: 50px;
+            left: -70px;
+            animation-delay: -6s;
+        }
+
+        @keyframes fogMove {
+            0% {
+                transform: translateX(0);
+            }
+            100% {
+                transform: translateX(200px);
+            }
+        }
+
+        .moon-icon:hover img {
+            filter: sepia(100%) saturate(220%) hue-rotate(-10deg) brightness(1.5);
+        }
+
+
 
         /* Story content */
         #story-content {
@@ -112,6 +287,14 @@
         /* Event sections */
         .event-section {
             margin-top: 150px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .event-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .event-section h2 {
@@ -128,6 +311,14 @@
             padding: 20px;
             border: 1px solid #ffffff;
             background: rgba(0, 0, 0, 0.3);
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease;
+        }
+
+        .phase-container.fade-in {
+            opacity: 1;
+            transform: translateX(0);
         }
 
         .phase-container h3 {
@@ -149,6 +340,14 @@
         /* Artists section */
         .artists-section {
             margin-top: 150px;
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 1s ease;
+        }
+
+        .artists-section.fade-in {
+            opacity: 1;
+            transform: translateY(0);
         }
 
         .artists-section h2 {
@@ -178,7 +377,14 @@
             color: #ffffff;
             text-transform: uppercase;
             letter-spacing: 2px;
-            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.6s ease;
+        }
+
+        .artist-card.fade-in {
+            opacity: 1;
+            transform: scale(1);
         }
 
         .artist-card:hover {
@@ -214,12 +420,26 @@
             <!-- Umbrella canopy -->
             <path d="M32.938 6.708C16.781 7.126 4.957 17.053 2 30.229A9.675 9.675 0 0 1 8.963 27.3a9.654 9.654 0 0 1 7.68 3.763a9.647 9.647 0 0 1 7.678-3.763c2.637 0 5.01 1.05 6.742 2.729A9.652 9.652 0 0 1 41.321 27.3a9.652 9.652 0 0 1 7.68 3.763a9.65 9.65 0 0 1 7.68-3.763A9.67 9.67 0 0 1 62 30.229C59.045 17.053 47.221 7.126 32.938 6.708" fill="currentColor"/>
             <!-- Text -->
-            <text x="32" y="42" text-anchor="middle" font-family="Creepster, Heebo, sans-serif" font-size="8" fill="currentColor" letter-spacing="1">The Umbrella</text>
+            <text x="32" y="40" text-anchor="middle" font-family="NightmarePills, Heebo, sans-serif" font-size="8" fill="currentColor" letter-spacing="0">THE UMBRELLA</text>
         </svg>
+        <!-- Moving fog overlay -->
+        <div class="umbrella-fog-overlay">
+            <div class="umbrella-fog-cloud umbrella-fog-cloud1"></div>
+            <div class="umbrella-fog-cloud umbrella-fog-cloud2"></div>
+            <div class="umbrella-fog-cloud umbrella-fog-cloud3"></div>
+        </div>
     </div>
 
-    <!-- Enter button - bottom of page -->
-    <button id="enter-button" class="enter-button">Enter</button>
+    <!-- Moon Icon -->
+    <div id="moon-icon" class="moon-icon">
+        <img src="C:\Users\evith\Downloads\Weather_icon_-_full_moon.svg" alt="Full Moon" width="80" height="80">
+        <!-- Fog overlay with clipping -->
+        <div class="fog-overlay">
+            <div class="fog-cloud fog-cloud1"></div>
+            <div class="fog-cloud fog-cloud2"></div>
+            <div class="fog-cloud fog-cloud3"></div>
+        </div>
+    </div>
 
     <!-- Story content - hidden initially -->
     <div id="story-content" style="display: none;">
@@ -276,9 +496,9 @@
         document.addEventListener('DOMContentLoaded', function() {
             const backgroundVideo = document.getElementById('background-video');
             const backgroundMusic = document.getElementById('background-music');
-            const enterButton = document.getElementById('enter-button');
             const umbrellaIcon = document.querySelector('.umbrella-icon');
             const storyContent = document.getElementById('story-content');
+            const moonIcon = document.getElementById('moon-icon');
             
             // Set music volume
             backgroundMusic.volume = 0.3;
@@ -291,13 +511,13 @@
                 console.log('Autoplay blocked by browser policy');
             });
 
-            // Enter button click handler
-            enterButton.addEventListener('click', function() {
-                // Start music when user clicks
+            // Moon click handler
+            moonIcon.addEventListener('click', function() {
+                // Start music
                 backgroundMusic.play().catch(e => console.log('Music play failed'));
                 
-                // Hide only the button
-                enterButton.style.display = 'none';
+                // Hide moon
+                moonIcon.style.display = 'none';
                 
                 // Show story content
                 storyContent.style.display = 'block';
@@ -340,12 +560,57 @@
                             clearInterval(typeInterval);
                             element.classList.remove('typing');
                             currentIndex++;
-                            setTimeout(typeNextElement, 800); // Delay before next paragraph
+                            
+                            // If this is the last paragraph, start the animations
+                            if (currentIndex >= typewriterElements.length) {
+                                setTimeout(showEventSections, 1000);
+                            } else {
+                                setTimeout(typeNextElement, 800); // Delay before next paragraph
+                            }
                         }
                     }, 80); // Slower typing speed
                 }
                 
                 setTimeout(typeNextElement, 500); // Initial delay
+            }
+
+            function showEventSections() {
+                const eventSection = document.querySelector('.event-section');
+                if (eventSection) {
+                    eventSection.classList.add('fade-in');
+                    
+                    // Show phase containers one by one
+                    setTimeout(showPhaseContainers, 500);
+                }
+            }
+
+            function showPhaseContainers() {
+                const phaseContainers = document.querySelectorAll('.phase-container');
+                phaseContainers.forEach((container, index) => {
+                    setTimeout(() => {
+                        container.classList.add('fade-in');
+                    }, index * 1000); // 1000ms delay between each phase
+                });
+                
+                // Show artists section after all phases are done
+                setTimeout(showArtistsSection, phaseContainers.length * 1000 + 1000);
+            }
+
+            function showArtistsSection() {
+                const artistsSection = document.querySelector('.artists-section');
+                if (artistsSection) {
+                    artistsSection.classList.add('fade-in');
+                    
+                    // Show artist cards one by one
+                    setTimeout(() => {
+                        const artistCards = document.querySelectorAll('.artist-card');
+                        artistCards.forEach((card, index) => {
+                            setTimeout(() => {
+                                card.classList.add('fade-in');
+                            }, index * 300); // 300ms delay between each artist
+                        });
+                    }, 500);
+                }
             }
         });
     </script>
