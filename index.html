@@ -282,7 +282,7 @@
         /* Story content */
         #story-content {
             position: absolute;
-            top: 200px;
+            top: 240px;
             left: 50%;
             transform: translateX(-50%);
             width: 90%;
@@ -540,14 +540,20 @@
                 // Start music
                 backgroundMusic.play().catch(e => console.log('Music play failed'));
                 
-                // Hide moon
-                moonIcon.style.visibility = 'hidden';
+                // Move moon up and stop animation
+                moonIcon.style.bottom = '400px';
+                moonIcon.style.animation = 'none';
+                moonIcon.style.transform = 'translateX(-50%) scale(0.8)';
+                moonIcon.style.transition = 'all 2s ease-in-out';
                 
-                // Show story content
-                storyContent.style.visibility = 'visible';
-                
-                // Start typewriter effect
-                startTypewriterEffect();
+                // Wait for moon to reach its position, then show text
+                setTimeout(() => {
+                    // Show story content
+                    storyContent.style.visibility = 'visible';
+                    
+                    // Start typewriter effect
+                    startTypewriterEffect();
+                }, 2000); // Wait 2 seconds for moon transition to complete
             });
 
             function startTypewriterEffect() {
