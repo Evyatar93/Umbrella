@@ -457,7 +457,7 @@
     </div>
 
     <!-- Moon Icon -->
-    <div id="moon-icon" class="moon-icon">
+    <div id="moon-icon" class="moon-icon" style="opacity: 0; visibility: hidden;">
         <img src="Weather_icon_-_full_moon.svg" alt="Full Moon" width="80" height="80">
         <!-- Fog overlay with clipping -->
         <div class="fog-overlay">
@@ -537,13 +537,20 @@
                 console.log('Autoplay blocked by browser policy');
             });
 
+            // Show moon after 3 seconds
+            setTimeout(() => {
+                moonIcon.style.opacity = '1';
+                moonIcon.style.visibility = 'visible';
+                moonIcon.style.transition = 'opacity 1s ease-in-out';
+            }, 3000);
+
             // Moon click handler
             moonIcon.addEventListener('click', function() {
                 // Start music
                 backgroundMusic.play().catch(e => console.log('Music play failed'));
                 
                 // Move moon up and stop animation
-                moonIcon.style.bottom = '470px';
+                moonIcon.style.bottom = '400px';
                 moonIcon.style.animation = 'none';
                 moonIcon.style.transform = 'translateX(-50%) scale(0.8)';
                 moonIcon.style.transition = 'all 4s ease-in-out';
